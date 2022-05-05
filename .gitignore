@@ -1,2 +1,4 @@
-spn.py
 util.py
+__pycache__
+*.pyc
+spn.py
