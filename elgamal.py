@@ -1,3 +1,7 @@
+from re import X
+import random
+
+
 def Inverse(x,N):
     
     return ModExp(x, N - 2, N)
@@ -30,9 +34,20 @@ def eGCD(a,b):
     return (X,Y,d)
 
 
-def enc(p,q,g,h,m,y):
+def gen():
 
-    G = p*q
+    q = 101 # any prime
+
+    G = list(range(1,q))
+
+    g = 1 # any number in {1,...,q-1} works since q is prime
+    
+    x = random.randint(1,q-1)
+    h = ModExp(g,x)
+
+    return (G,q,g,h)
+    
+def enc(p,q,g,h,m,y):
 
     gy = ModExp(g%p,y,p)
 
@@ -43,7 +58,6 @@ def enc(p,q,g,h,m,y):
 
 def dec(p,q,x,ctxt):
 
-    G = p*q
     c1,c2 = ctxt
 
     c1x = ModExp(c1%p,x,p)
