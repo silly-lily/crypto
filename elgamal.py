@@ -61,4 +61,6 @@ def dec(p,q,x,ctxt):
     c1,c2 = ctxt
 
     c1x = ModExp(c1%p,x,p)
-    return (c2*Inverse(c1x,p))%p
+
+    m = (c2*Inverse(c1x,p))%p
+    return m
